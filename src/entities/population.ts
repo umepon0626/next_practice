@@ -3,12 +3,6 @@ export type PerYearPopulation = {
   value: Number;
 };
 
-export type PerYearPopulationRequestParam = {
-  prefCode: Number;
-  addArea?: string;
-  cityCode: string | Number;
-};
-
 export type PerYearPopulationResponse = {
   message: string;
   result: {
