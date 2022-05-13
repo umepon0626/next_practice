@@ -2,8 +2,12 @@ import { useQuery } from 'react-query'
 import { AxiosPromise } from 'axios'
 import { PrefectureRepository } from '../repositories/resas/prefectures'
 import { PrefecturesResponse } from '../entities/prefecture'
+import Select, {MultiValue} from 'react-select'
+import { useState } from 'react'
+
 export const ListPrefectureView: React.FC = () => {
   const prefectureRepository = new PrefectureRepository();
+  const [selectedOptions, setSelectedOptions] = useState<MultiValue<{value: Number; label: string}>>([]);
   const prefectures = useQuery(
     ['prefecture'], 
     (): AxiosPromise<PrefecturesResponse> =>
@@ -15,10 +19,6 @@ export const ListPrefectureView: React.FC = () => {
   if(prefectures.isError){
     return <>リクエストに失敗しました</>
   }
-  return <>{prefectures.data?.data.result.map(prefecture => (
-    <div key={Number(prefecture.prefCode)}>
-      {prefecture.prefName}
-    </div>
-  ))}</>
-
+  const options = prefectures.data?.data.result.map(prefecture => ({ value: prefecture.prefCode, label: prefecture.prefName }));
+  return <Select options={options} defaultValue={selectedOptions} isMulti={true} onChange={(newValue, _)=>{setSelectedOptions(newValue)}}/>
 }
