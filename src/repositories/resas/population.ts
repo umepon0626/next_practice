@@ -18,7 +18,7 @@ export class PopulationRepository {
     });
   }
 
-  async list(prefCode: number): AxiosPromise<PerYearPopulationResponse> {
+  async list(prefCode: Number): AxiosPromise<PerYearPopulationResponse> {
     return await this.client.get("api/v1/population/composition/perYear", {
       params: { prefCode: prefCode, cityCode: "-" },
     });
