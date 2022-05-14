@@ -1,4 +1,4 @@
-import axios, { AxiosPromise, AxiosInstance } from "axios";
+import axios, { AxiosInstance, AxiosResponse } from "axios";
 import { PrefecturesResponse } from "../../entities/prefecture";
 export class PrefectureRepository {
   private client: AxiosInstance;
@@ -15,7 +15,7 @@ export class PrefectureRepository {
       },
     });
   }
-  async list(): AxiosPromise<PrefecturesResponse> {
+  async list(): Promise<AxiosResponse<PrefecturesResponse>> {
     return await this.client.get("api/v1/prefectures");
   }
 }
