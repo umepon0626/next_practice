@@ -1,4 +1,4 @@
-import axios, { AxiosInstance } from "axios";
+import axios, { AxiosInstance, AxiosResponse } from "axios";
 import { PerYearPopulationResponse } from "../../entities/population";
 
 export class PopulationRepository {
@@ -17,7 +17,9 @@ export class PopulationRepository {
     });
   }
 
-  async list(prefCode: Number): Promise<PerYearPopulationResponse> {
+  async list(
+    prefCode: Number
+  ): Promise<AxiosResponse<PerYearPopulationResponse>> {
     return await this.client.get("api/v1/population/composition/perYear", {
       params: { prefCode: prefCode, cityCode: "-" },
     });
