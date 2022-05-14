@@ -8,11 +8,6 @@ import {useState} from 'react'
 
 type SelectOption = {value: Number; label: string};
 
-type Props = {
-  selectedOptions: MultiValue<SelectOption>;
-  setSelectedOptions: (selectedValue: MultiValue<SelectOption>) => void;
-}
-
 const queryClient = new QueryClient()
 
 const Home: NextPage = () => {
@@ -20,7 +15,7 @@ const Home: NextPage = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <ListPrefectureView selectedOptions={selectedOptions} setSelectedOptions={setSelectedOptions}/>
-      {selectedOptions.length  ? <PopulationGraphView prefCodes={selectedOptions.map(option => option.value)} prefLabels={selectedOptions.map(option => option.label)}/> : <>選択してください</>}
+      {selectedOptions.length  ? <PopulationGraphView prefCodes={selectedOptions.map(option => option.value)} prefLabels={selectedOptions.map(option => option.label)}/> : <></>}
       
     </QueryClientProvider>
   )

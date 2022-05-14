@@ -26,5 +26,5 @@ export const ListPrefectureView: React.FC<Props> = (props) => {
     return <>リクエストに失敗しました</>
   }
   const options = prefectures.data?.data.result.map(prefecture => ({ value: prefecture.prefCode, label: prefecture.prefName }));
-  return <Select options={options} defaultValue={selectedOptions} isMulti={true} onChange={(newValue, _)=>{setSelectedOptions(newValue)}}/>
+  return <Select options={options} defaultValue={selectedOptions} isMulti={true} onChange={(newValue, _)=>{setSelectedOptions(newValue)}} placeholder="都道府県を選択してください。"/>
 }
