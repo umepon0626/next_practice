@@ -29,6 +29,11 @@ export const PopulationGraphView: React.FC<Props> = (props) => {
     title: {
       text: "人口統計",
     },
+    yAxis: {
+      title: {
+        text: "人口",
+      },
+    },
     series: populations.map((p, idx) => {
       const res = p.data?.data.result.data[0]; //今回は総人口だけなので、0番目にしているが、後々実装を変更する必要があるかも。
       if (res) {
@@ -45,5 +50,15 @@ export const PopulationGraphView: React.FC<Props> = (props) => {
       };
     }),
   };
-  return <HighchartsReact highcharts={Highcharts} options={options} />;
+  return (
+    <div id="population-graph">
+      <HighchartsReact highcharts={Highcharts} options={options} />
+      <style jsx>{`
+        #population-graph {
+          padding-left: 10px;
+          padding-right: 30px;
+        }
+      `}</style>
+    </div>
+  );
 };
