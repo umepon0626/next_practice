@@ -7,6 +7,6 @@ export type PerYearPopulationResponse = {
   message: string;
   result: {
     boundaryYear: Number;
-    data: PerYearPopulation[];
+    data: { label: string; data: PerYearPopulation[] }[];
   };
 };
