@@ -42,4 +42,4 @@ jobs:
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}} #Required
           scope: ${{ secrets.VERCEL_ORG_ID}}
           alias-domains:
-            app.lab-{{PR_NUMBER}}.dev.cloudbase.ink
+            app.lab-2.dev.cloudbase.ink
