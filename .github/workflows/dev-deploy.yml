@@ -22,6 +22,8 @@ jobs:
       - name: next build
         working-directory: "./src"
         run: npm run build
+        env:
+          RESAS_API_KEY: ${{ secrets.RESAS_API_KEY }}
       - uses: actions/cache@v2
         with:
           path: |
